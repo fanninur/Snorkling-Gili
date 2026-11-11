@@ -17,9 +17,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=20261111-gallery-polish-2" />
   <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/responsive.css?v=20261111-gallery-2" />
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 
       <div class="navbar__menu" id="primary-menu" data-menu>
         <ul class="navbar__links">
-          <li><a class="navbar__link navbar__link--active" href="#home">Home</a></li>
+          <li><a class="navbar__link navbar__link--active" href="#home" aria-current="location">Home</a></li>
           <li><a class="navbar__link" href="#packages">Package Tour</a></li>
           <li><a class="navbar__link" href="#blog">Blog</a></li>
           <li><a class="navbar__link" href="#gallery">Gallery</a></li>
@@ -54,12 +54,13 @@
   </header>
 
   <main>
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero__media" role="img" aria-label="Snorkeling around Gili Islands"
-        style="background-image:url('assets/images/snorkling-gili.webp');"></div>
-      <div class="hero__shade"></div>
+    <section class="hero" id="home" aria-labelledby="hero-title" data-enter>
+      <div class="hero__visual" data-hero-visual role="img" aria-label="Snorkeling around Gili Islands">
+        <div class="hero__media" aria-hidden="true"></div>
+        <div class="hero__shade" aria-hidden="true"></div>
+      </div>
 
-      <div class="hero__content container reveal">
+      <div class="hero__content container" data-hero-content>
         <p class="eyebrow hero__eyebrow">Explore Gili's Underwater World</p>
 
         <h1 class="hero__title" id="hero-title">
@@ -83,7 +84,7 @@
 
     <section class="intro section" aria-labelledby="intro-title">
       <div class="intro__inner container">
-        <div class="intro__image reveal">
+        <div class="intro__image">
           <img src="assets/images/localguide.webp" alt="Cyclists riding along a quiet village road in Yogyakarta"
             loading="lazy" />
           <span class="sticker-badge">Local Guide</span>
@@ -104,7 +105,7 @@
         </div>
 
 
-        <div class="intro__content reveal">
+        <div class="intro__content">
           <p class="eyebrow">Why Snorkeling Gili</p>
           <h2 class="section-title" id="intro-title">
             Discover vibrant coral reefs and crystal‑clear waters of Gili Islands.
@@ -125,7 +126,7 @@
     </section>
 
     <section class="packages section section--dark" id="packages" aria-labelledby="packages-title">
-      <div class="section-head container reveal">
+      <div class="section-head container">
         <p class="eyebrow">Snorkeling Packages</p>
         <h2 class="section-title" id="packages-title">Choose your Gili Snorkeling Adventure.</h2>
         <p class="section-copy" Three curated snorkeling experiences: Beginner Snorkeling, Intermediate Snorkeling, and
@@ -133,7 +134,7 @@
       </div>
 
       <div class="tour-grid container">
-        <article class="tour-card reveal">
+        <article class="tour-card">
           <img class="tour-card__image" src="assets/images/snorkling-gili-gallery01.webp"
             alt="Beginner Snorkeling - Gili Trawangan" loading="lazy" />
           <div class="tour-card__content">
@@ -148,7 +149,6 @@
               <li>Hotel pickup &amp; drop-off</li>
               <li>Local snacks &amp; mineral water</li>
             </ul>
-            <p>&nbsp;</p>
             <div class="tour-card__footer">
               <strong>From IDR 1,200K / $80</strong>
               <a class="button button--primary button--small" href="#contact">Book</a>
@@ -156,7 +156,7 @@
           </div>
         </article>
 
-        <article class="tour-card tour-card--featured reveal">
+        <article class="tour-card tour-card--featured">
           <img class="tour-card__image" src="assets/images/snorkling-gili-gallery02.webp"
             alt="Cyclists riding through Borobudur area countryside" loading="lazy" />
           <div class="tour-card__content">
@@ -171,7 +171,6 @@
               <li>Borobudur entrance ticket</li>
               <li>Lunch &amp; refreshments</li>
             </ul>
-            <p>&nbsp;</p>
             <div class="tour-card__footer">
               <strong>From IDR 750K / $47</strong>
               <a class="button button--primary button--small" href="#contact">Book</a>
@@ -179,7 +178,7 @@
           </div>
         </article>
 
-        <article class="tour-card reveal">
+        <article class="tour-card">
           <img class="tour-card__image" src="assets/images/snorkling-gili-gallery03.webp"
             alt="Cyclist enjoying a private tour through Merapi foothills" loading="lazy" />
           <div class="tour-card__content">
@@ -194,7 +193,6 @@
               <li>Custom route &amp; flexible schedule</li>
               <li>Premium bike &amp; full support</li>
             </ul>
-            <p>&nbsp;</p>
             <div class="tour-card__footer">
               <strong>From IDR 1.2M / $75</strong>
               <a class="button button--primary button--small" href="#contact">Book</a>
@@ -205,25 +203,25 @@
     </section>
 
     <section class="blog section" id="blog" aria-labelledby="blog-title">
-      <div class="section-head container reveal">
+      <div class="section-head container">
         <p class="eyebrow">Travel Notes</p>
         <h2 class="section-title" id="blog-title">Prepare for the ride, not just the photo.</h2>
       </div>
 
       <div class="blog-grid container">
-        <article class="blog-card reveal">
+        <article class="blog-card">
           <span class="blog-card__category">Snorkeling Gili Guide</span>
           <h3 class="blog-card__title">What to expect on your first Gili snorkeling adventure</h3>
           <p class="blog-card__date">July 23, 2026</p>
           <a class="blog-card__link" href="#contact">Read More</a>
         </article>
-        <article class="blog-card reveal">
+        <article class="blog-card">
           <span class="blog-card__category">Snorkeling Preparation</span>
           <h3 class="blog-card__title">What to wear, bring, and avoid before a morning rafting in Ubud</h3>
           <p class="blog-card__date">July 23, 2026</p>
           <a class="blog-card__link" href="#contact">Read More</a>
         </article>
-        <article class="blog-card reveal">
+        <article class="blog-card">
           <span class="blog-card__category">Ubud Travel Tips</span>
           <h3 class="blog-card__title">How to combine rafting with Ubud temples, rice terraces, and local cuisine</h3>
           <p class="blog-card__date">July 23, 2026</p>
@@ -233,33 +231,35 @@
     </section>
 
     <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
-      <div class="section-head container reveal">
+      <div class="section-head container gallery__head" data-gallery-intro>
         <p class="eyebrow">Gallery</p>
         <h2 class="section-title" id="gallery-title">Scenes from the river around Ubud.</h2>
       </div>
 
       <div class="gallery-grid container">
-        <button class="gallery-item gallery-item--large reveal" type="button"
+        <button class="gallery-item gallery-item--large" data-gallery-item type="button"
           data-lightbox="assets/images/snorkling-gili-gallery03.webp">
           <picture>
             <source type="image/webp" srcset="assets/images/snorkling-gili-gallery03.webp" />
             <img src="assets/images/snorkling-gili-gallery03.webp" alt="Snorkeling guide image" loading="lazy" />
           </picture>
         </button>
-        <button class="gallery-item reveal" type="button" data-lightbox="assets/images/snorkling-gili-gallery01.webp">
+        <button class="gallery-item" data-gallery-item type="button"
+          data-lightbox="assets/images/snorkling-gili-gallery01.webp">
           <picture>
             <source type="image/webp" srcset="assets/images/snorkling-gili-gallery01.webp" />
             <img src="assets/images/snorkling-gili-gallery01.webp" alt="Snorkeling tour scene" loading="lazy" />
           </picture>
         </button>
-        <button class="gallery-item reveal" type="button" data-lightbox="assets/images/snorkling-gili-gallery02.webp">
+        <button class="gallery-item" data-gallery-item type="button"
+          data-lightbox="assets/images/snorkling-gili-gallery02.webp">
           <picture>
             <source type="image/webp" srcset="assets/images/snorkling-gili-gallery02.webp" />
             <img src="assets/images/snorkling-gili-gallery02.webp" alt="Snorkeling through Ayung River"
               loading="lazy" />
           </picture>
         </button>
-        <button class="gallery-item gallery-item--wide reveal" type="button"
+        <button class="gallery-item gallery-item--wide" data-gallery-item type="button"
           data-lightbox="assets/images/snorking-gili-gallery04.webp">
           <picture>
             <source type="image/webp" srcset="assets/images/snorking-gili-gallery04.webp" />
@@ -283,7 +283,7 @@
           </p>
           <div class="testimonial-card__person">
             <span>
-              <img src="assets/images/amelia.png">
+              <img src="assets/images/amelia.png" alt="" loading="lazy" />
             </span>
             <strong>Amelia, Australia</strong>
           </div>
@@ -295,7 +295,7 @@
           </p>
           <div class="testimonial-card__person">
             <span>
-              <img src="assets/images/jonas.png">
+              <img src="assets/images/jonas.png" alt="" loading="lazy" />
             </span>
             <strong>Jonas, Germany</strong>
           </div>
@@ -307,7 +307,7 @@
           </p>
           <div class="testimonial-card__person">
             <span>
-              <img src="assets/images/sofia.png">
+              <img src="assets/images/sofia.png" alt="" loading="lazy" />
             </span>
             <strong>Sofia, Spain</strong>
           </div>
@@ -317,7 +317,7 @@
 
     <section class="contact section" id="contact" aria-labelledby="contact-title">
       <div class="contact__inner container">
-        <div class="contact__content reveal">
+        <div class="contact__content">
           <p class="eyebrow">Contact Us</p>
           <h2 class="section-title" id="contact-title">Ready for a snorkeling adventure in Gili?</h2>
           <p class="section-copy">
@@ -325,13 +325,13 @@
             meeting point, and guide for your ride around Yogyakarta.
           </p>
           <div class="contact__details">
-            <p><strong>WhatsApp</strong> +62 812 3456 7890</p>
-            <p><strong>Email</strong> hello@snorklinggili.com</p>
+            <p><strong>WhatsApp</strong> <a href="https://wa.me/6281234567890">+62 812 3456 7890</a></p>
+            <p><strong>Email</strong> <a href="mailto:hello@snorklinggili.com">hello@snorklinggili.com</a></p>
             <p><strong>Location</strong> Gili Islands, Indonesia</p>
           </div>
         </div>
 
-        <form class="contact-form reveal" data-booking-form action="submit.php" method="POST">
+        <form class="contact-form" data-booking-form action="submit.php" method="POST">
           <label class="contact-form__field">
             <span>Name</span>
             <input name="name" type="text" placeholder="Your name" required />
@@ -394,9 +394,12 @@
       data-lightbox-next>Next</button>
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/gallery.js"></script>
-  <script src="js/booking.js"></script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/hero-motion.js?v=20261111-home-smooth-reverse" defer></script>
+  <script src="js/main.js?v=20261111-active-menu" defer></script>
+  <script src="js/gallery.js?v=20261111-gallery-motion" defer></script>
+  <script src="js/booking.js" defer></script>
 
   <!-- Floating WhatsApp Button -->
   <a class="whatsapp-float" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
