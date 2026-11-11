@@ -2,6 +2,22 @@ const header = document.querySelector("[data-header]");
 const menu = document.querySelector("[data-menu]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const revealElements = document.querySelectorAll(".reveal");
+const sectionLinks = [...document.querySelectorAll('.navbar__link[href^="#"]')];
+const trackedSections = sectionLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+const setActiveSection = (sectionId) => {
+  sectionLinks.forEach((link) => {
+    const isActive = link.hash === `#${sectionId}`;
+    link.classList.toggle("navbar__link--active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+};
 
 const updateHeaderState = () => {
   if (!header) return;
@@ -69,3 +85,21 @@ if ("IntersectionObserver" in window) {
 }
 
 updateHeaderState();
+
+if ("IntersectionObserver" in window && trackedSections.length) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const activeEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (activeEntry) setActiveSection(activeEntry.target.id);
+    },
+    {
+      rootMargin: "-35% 0px -50% 0px",
+      threshold: [0, 0.1, 0.25, 0.5],
+    },
+  );
+
+  trackedSections.forEach((section) => sectionObserver.observe(section));
+}

@@ -59,3 +59,30 @@ document.addEventListener("keydown", (event) => {
     setLightboxImage(activeGalleryIndex + 1);
   }
 });
+
+(() => {
+  const { gsap, ScrollTrigger } = window;
+  const intro = document.querySelector("[data-gallery-intro]");
+
+  if (!gsap || !ScrollTrigger || !intro || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(
+    intro,
+    { autoAlpha: 0, y: 18 },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.72,
+      ease: "power2.out",
+      clearProps: "transform",
+      scrollTrigger: {
+        trigger: intro,
+        start: "top 82%",
+        once: true,
+      },
+    },
+  );
+})();
