@@ -87,7 +87,7 @@
           0,
         )
         .to(
-          content,
+          content.querySelectorAll(".hero__eyebrow, .hero__description, .hero__actions"),
           {
             autoAlpha: 0,
             y: -18,
