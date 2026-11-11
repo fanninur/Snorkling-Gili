@@ -11,7 +11,7 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(var(--reveal-y, 24px));
   transition:
     opacity 600ms ease,
     transform 600ms ease;
@@ -22,9 +22,190 @@
   transform: translateY(0);
 }
 
+/* Testimonials use the same observer-driven reveal with a quieter stagger. */
+.testimonials .testimonial-card.reveal {
+  --reveal-y: 16px;
+  transition-property: opacity, transform, border-color, box-shadow;
+  transition-duration: 640ms, 640ms, 220ms, 220ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), ease, ease;
+}
+
+.testimonials .testimonial-card.reveal:nth-child(2) {
+  transition-delay: 80ms, 80ms, 0ms, 0ms;
+}
+
+.testimonials .testimonial-card.reveal:nth-child(3) {
+  transition-delay: 160ms, 160ms, 0ms, 0ms;
+}
+
+/* Contact interactions use quick, state-based feedback rather than scroll motion. */
+.contact__details a {
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.contact-form__field span {
+  transition: color 150ms ease;
+}
+
+.contact-form :is(input, select, textarea):focus {
+  border-color: var(--color-meadow-dark);
+  box-shadow: 0 0 0 3px rgba(15, 126, 145, 0.13);
+}
+
+.contact-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-meadow-dark);
+  outline-offset: 2px;
+}
+
+.contact-form__field:focus-within > span {
+  color: var(--color-meadow-dark);
+}
+
+.contact-form:focus-within {
+  border-color: rgba(15, 126, 145, 0.5);
+  box-shadow: 0 20px 48px rgba(10, 7, 27, 0.13);
+}
+
+.contact-form__button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact__details a:hover {
+    color: var(--color-meadow-dark);
+    text-decoration-color: currentColor;
+  }
+}
+
+@media (hover: none) {
+  .contact-form__button:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form__button:active {
+    transform: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lightbox__close:hover,
+  .lightbox__nav:hover {
+    border-color: rgba(243, 237, 228, 0.72);
+    background: rgba(243, 237, 228, 0.16);
+    transform: translateY(-1px);
+  }
+
+  .gallery-item:hover {
+    border-color: rgba(15, 126, 145, 0.3);
+    box-shadow: 0 14px 32px rgba(10, 7, 27, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.025);
+  }
+
+  .blog .blog-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(15, 126, 145, 0.32);
+    box-shadow: 0 12px 26px rgba(10, 7, 27, 0.09);
+  }
+
+  .blog .blog-card:hover .blog-card__link {
+    background-size: 100% 1px;
+  }
+
+  .blog .blog-card:hover .blog-card__link::after {
+    transform: translate(2px, -2px);
+  }
+
+  .packages .tour-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(15, 126, 145, 0.42);
+    box-shadow: 0 14px 30px rgba(10, 7, 27, 0.16);
+  }
+
+  .packages .tour-card:hover .tour-card__image {
+    transform: scale(1.025);
+  }
+
+  .testimonials .testimonial-card.reveal.is-visible:hover {
+    transform: translateY(-3px);
+    border-color: rgba(243, 237, 228, 0.54);
+    box-shadow: 0 14px 34px rgba(10, 7, 27, 0.14);
+    transition-delay: 0ms, 0ms, 0ms, 0ms;
+  }
+}
+
+.gallery-item:focus-visible {
+  border-color: rgba(15, 126, 145, 0.44);
+  box-shadow: 0 12px 28px rgba(10, 7, 27, 0.1);
+}
+
+.gallery-item:focus-visible img {
+  transform: scale(1.025);
+}
+
+.blog .blog-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(15, 126, 145, 0.32);
+  box-shadow: 0 12px 26px rgba(10, 7, 27, 0.09);
+}
+
+.blog .blog-card__link:focus-visible {
+  background-size: 100% 1px;
+}
+
+.blog .blog-card__link:focus-visible::after {
+  transform: translate(2px, -2px);
+}
+
+.packages .tour-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(15, 126, 145, 0.42);
+  box-shadow: 0 14px 30px rgba(10, 7, 27, 0.16);
+}
+
+.packages .tour-card:active {
+  transform: translateY(0);
+  transition-duration: 100ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
+    transform: none;
+  }
+
+  .packages .tour-card,
+  .packages .tour-card__image,
+  .gallery-item,
+  .gallery-item img,
+  .blog .blog-card,
+  .blog .blog-card__link,
+  .blog .blog-card__link::after {
+    transition: none;
+  }
+
+  .testimonials .testimonial-card.reveal {
+    transition-delay: 0ms !important;
+  }
+
+  .packages .tour-card:is(:hover, :focus-within, :active) {
+    transform: none;
+  }
+
+  .gallery-item:is(:hover, :focus-visible) {
+    transform: none;
+  }
+
+  .gallery-item:is(:hover, :focus-visible) img {
+    transform: none;
+  }
+
+  .blog .blog-card:is(:hover, :focus-within) {
     transform: none;
   }
 }
