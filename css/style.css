@@ -1279,25 +1279,91 @@ button {
 .footer {
   background: var(--color-forest-ink);
   color: var(--color-paper-cream);
+  border-top: 1px solid rgba(243, 237, 228, 0.14);
 }
 
 .footer__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-block: 28px;
+  gap: clamp(20px, 4vw, 48px);
+  min-height: 116px;
+  padding-block: 24px;
 }
 
+.footer .navbar__brand {
+  width: fit-content;
+  flex: 0 0 auto;
+}
 
+.footer .navbar__brand img {
+  width: clamp(118px, 12vw, 148px);
+  transition: opacity 220ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 .footer p,
-.footer a {
+.footer__top-link {
   margin: 0;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+}
+
+.footer p {
+  color: rgba(243, 237, 228, 0.62);
+}
+
+.footer__top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid rgba(243, 237, 228, 0.2);
+  border-radius: 999px;
+  color: var(--color-paper-cream);
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer__top-link::after {
+  content: "↑";
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer__top-link:focus-visible {
+  outline: 2px solid var(--color-lichen);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .footer .navbar__brand:hover img {
+    opacity: 0.82;
+    transform: translateY(-1px);
+  }
+
+  .footer__top-link:hover {
+    border-color: rgba(243, 237, 228, 0.42);
+    background: rgba(243, 237, 228, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .footer__top-link:hover::after {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer .navbar__brand img,
+  .footer__top-link,
+  .footer__top-link::after {
+    transition: none;
+  }
 }
 
 .lightbox {
@@ -1398,21 +1464,4 @@ button {
 .whatsapp-float svg {
   width: 28px;
   height: 28px;
-}
-
-
-@media (max-width:768px){
-
-  .footer__inner{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer__inner > *{
-    width: 100%;
-    text-align: center;
-  }
-
 }
